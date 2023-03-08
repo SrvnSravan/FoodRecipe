@@ -1,11 +1,11 @@
 import React from "react";
 import { Text, View } from "react-native";
-import SignupPage from "./src/screens/sign-up";
+import HomeScreen from "./src/screens/home-screen";
 
 const App = () => {
   return(
     
-      <SignupPage />
+      <HomeScreen />
     
   )
 };
