@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import SignInPage from './sign-in';
 
-const SignupPage = () => {
+const SignupPage = (navigation) => {
+
+  const nav = useNavigation();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,7 +32,6 @@ const SignupPage = () => {
         value={email}
         autoCapitalize="none"
         keyboardType="email-address"
-        
       />
       <TextInput
         style={styles.input}
@@ -41,10 +51,12 @@ const SignupPage = () => {
       <TouchableOpacity style={styles.button} onPress={handleSignIn}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
-     
+
       <View style={styles.signUp}>
-      <Text style={styles.accountText}>Already have an Account?</Text>
-      <Text style={styles.signupText}>Sign In</Text>
+        <Text style={styles.accountText}>Already have an Account?</Text>
+        <TouchableOpacity onPress={()=> {nav.navigate(SignInPage)}}>
+        <Text style={styles.signupText}>Sign In</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -63,18 +75,18 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     width: 98,
     height: 40,
-    color: "#000000",
-    marginBottom: 5
+    color: '#000000',
+    marginBottom: 5,
   },
   subTitle: {
     width: 120,
     height: 19,
     fontSize: 14,
-    color: "#7C7D7E",
-    fontWeight: "bold",
-    marginBottom: 25
+    color: '#7C7D7E',
+    fontWeight: 'bold',
+    marginBottom: 25,
   },
- 
+
   input: {
     width: 307,
     height: 50,
@@ -83,7 +95,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 28,
     marginBottom: 16,
-    color: "#F2F2F2"
+    color: '#F2F2F2',
   },
   button: {
     backgroundColor: '#3BB0EC',
@@ -91,38 +103,39 @@ const styles = StyleSheet.create({
     padding: 12,
     height: 50,
     width: 307,
-    borderRadius: 28
+    borderRadius: 28,
   },
   buttonText: {
     color: '#ffffff',
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: "center"
+    textAlign: 'center',
   },
   signUp: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   forgotText: {
-    fontWeight: "bold",
-    color: "#444444",
-    textAlign: "center",
+    fontWeight: 'bold',
+    color: '#444444',
+    textAlign: 'center',
     width: 144,
     height: 19,
-    margin: 15
-
+    margin: 15,
   },
   accountText: {
     height: 19,
-    width: 197,
-    textAlign: "center",
-    color: "#7C7D7E",
+    width: 177,
+    textAlign: 'center',
+    color: '#7C7D7E',
+    marginTop: 10
   },
   signupText: {
     width: 52,
     height: 19,
-    color: "#5DA7A3",
-    fontWeight: "bold"
-  }
+    color: '#5DA7A3',
+    fontWeight: 'bold',
+    marginTop: 10
+  },
 });
 
 export default SignupPage;
