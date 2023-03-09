@@ -18,16 +18,15 @@ const SignInPage = navigation => {
   const [password, setPassword] = useState('');
 
   const handleSignIn = () => {
-     // Validate email and password
-     
-  if (email === '' || password === '') {
-    // Show error message
-    alert('Please enter both email and password');
-  }else{
-    console.log(`Email: ${email}, Password: ${password}`);
-    nav.navigate(MyTabs);
-  }
-   
+    // Validate email and password
+
+    if (email === '' || password === '') {
+      // Show error message
+      alert('Please enter both email and password');
+    } else {
+      console.log(`Email: ${email}, Password: ${password}`);
+      nav.navigate(MyTabs);
+    }
   };
 
   return (

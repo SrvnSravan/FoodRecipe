@@ -20,7 +20,7 @@ const SignupPage = navigation => {
     if (email === '' || password === '') {
       // Show error message
       alert('Please enter all the details');
-    }else{
+    } else {
       console.log(`Email: ${email}, Password: ${password}`);
       nav.navigate(MyTabs);
     }

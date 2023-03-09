@@ -1,6 +1,6 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Importing Screens...
@@ -15,9 +15,9 @@ const Tab = createBottomTabNavigator();
 const MyTabs = () => {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
+      screenOptions={({route}) => ({
         headerShown: false,
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({focused, color, size}) => {
           let iconName;
 
           if (route.name === 'Home') {
@@ -27,7 +27,9 @@ const MyTabs = () => {
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person-sharp' : 'person-outline';
           } else if (route.name === 'More') {
-            iconName = focused ? 'ellipsis-horizontal-sharp' : 'ellipsis-horizontal-outline';
+            iconName = focused
+              ? 'ellipsis-horizontal-sharp'
+              : 'ellipsis-horizontal-outline';
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -36,8 +38,7 @@ const MyTabs = () => {
       tabBarOptions={{
         activeTintColor: 'blue',
         inactiveTintColor: 'gray',
-      }}
-    >
+      }}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Meals" component={Meals} />
       <Tab.Screen name="Profile" component={ProfileScreen} />

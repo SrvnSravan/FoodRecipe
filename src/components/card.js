@@ -5,8 +5,7 @@ const Card = ({title, content}) => {
   return (
     <View style={styles.card}>
       <Text style={styles.title}>{category.name}</Text>
-      <Image source={{uri:category.image}}
-          style={styles.image} />
+      <Image source={{uri: category.image}} style={styles.image} />
     </View>
   );
 };

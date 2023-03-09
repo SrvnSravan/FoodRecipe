@@ -8,9 +8,8 @@ const MealPlanScreen = ({categoryId}) => {
   useEffect(() => {
     fetch(`http://proteinium.iroidtechnologies.in/api/v1/get-mealplans`)
       .then(response => response.json())
-      .then(data => setMealPlans(data.data.meal_plans))
-      console.log(data.data.meal_plans)
-      .catch(error => console.log(error));
+      .then(data => setMealPlans(data.data.meal_plans));
+    console.log(data.data.meal_plans).catch(error => console.log(error));
   }, [categoryId]);
 
   const renderPlanItem = ({item}) => (
