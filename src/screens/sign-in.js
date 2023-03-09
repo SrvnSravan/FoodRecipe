@@ -7,21 +7,27 @@ import {
   StyleSheet,
 } from 'react-native';
 import SignupPage from './sign-up';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import MyTabs from '../navigation/bottom-tabs';
 import HomeScreen from './home-screen';
 
-const SignInPage = (navigation) => {
-
+const SignInPage = navigation => {
   const nav = useNavigation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignIn = () => {
-    // Handle sign in logic here
+     // Validate email and password
+     
+  if (email === '' || password === '') {
+    // Show error message
+    alert('Please enter both email and password');
+  }else{
     console.log(`Email: ${email}, Password: ${password}`);
-     nav.navigate(MyTabs)
+    nav.navigate(MyTabs);
+  }
+   
   };
 
   return (
@@ -35,6 +41,7 @@ const SignInPage = (navigation) => {
         value={email}
         autoCapitalize="none"
         keyboardType="email-address"
+        color={'#000000'}
       />
       <TextInput
         style={styles.input}
@@ -42,7 +49,9 @@ const SignInPage = (navigation) => {
         onChangeText={setPassword}
         value={password}
         secureTextEntry
+        color={'#000000'}
       />
+
       <TouchableOpacity style={styles.button} onPress={handleSignIn}>
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
@@ -51,8 +60,11 @@ const SignInPage = (navigation) => {
       </View>
       <View style={styles.signUp}>
         <Text style={styles.accountText}>Don't have an Account?</Text>
-        <TouchableOpacity onPress={()=>{nav.navigate(SignupPage)}}>
-        <Text style={styles.signupText}>Sign Up</Text>
+        <TouchableOpacity
+          onPress={() => {
+            nav.navigate(SignupPage);
+          }}>
+          <Text style={styles.signupText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </View>

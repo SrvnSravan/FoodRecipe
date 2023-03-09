@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const MealsScreen = () => {
+const Meals = () => {
   return (
     <View>
       <Text>Hello Meals Screen</Text>
     </View>
   );
 };
-export default MealsScreen;
+export default Meals;

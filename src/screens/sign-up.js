@@ -6,11 +6,10 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import SignInPage from './sign-in';
 
-const SignupPage = (navigation) => {
-
+const SignupPage = navigation => {
   const nav = useNavigation();
 
   const [email, setEmail] = useState('');
@@ -18,6 +17,13 @@ const SignupPage = (navigation) => {
 
   const handleSignIn = () => {
     // Handle sign in logic here
+    if (email === '' || password === '') {
+      // Show error message
+      alert('Please enter all the details');
+    }else{
+      console.log(`Email: ${email}, Password: ${password}`);
+      nav.navigate(MyTabs);
+    }
     console.log(`Email: ${email}, Password: ${password}`);
   };
 
@@ -32,6 +38,7 @@ const SignupPage = (navigation) => {
         value={email}
         autoCapitalize="none"
         keyboardType="email-address"
+        color={'#000000'}
       />
       <TextInput
         style={styles.input}
@@ -39,6 +46,7 @@ const SignupPage = (navigation) => {
         onChangeText={setPassword}
         value={password}
         secureTextEntry
+        color={'#000000'}
       />
 
       <TextInput
@@ -47,6 +55,7 @@ const SignupPage = (navigation) => {
         onChangeText={setPassword}
         value={password}
         secureTextEntry
+        color={'#000000'}
       />
       <TouchableOpacity style={styles.button} onPress={handleSignIn}>
         <Text style={styles.buttonText}>Sign Up</Text>
@@ -54,8 +63,11 @@ const SignupPage = (navigation) => {
 
       <View style={styles.signUp}>
         <Text style={styles.accountText}>Already have an Account?</Text>
-        <TouchableOpacity onPress={()=> {nav.navigate(SignInPage)}}>
-        <Text style={styles.signupText}>Sign In</Text>
+        <TouchableOpacity
+          onPress={() => {
+            nav.navigate(SignInPage);
+          }}>
+          <Text style={styles.signupText}>Sign In</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -127,14 +139,14 @@ const styles = StyleSheet.create({
     width: 177,
     textAlign: 'center',
     color: '#7C7D7E',
-    marginTop: 10
+    marginTop: 10,
   },
   signupText: {
     width: 52,
     height: 19,
     color: '#5DA7A3',
     fontWeight: 'bold',
-    marginTop: 10
+    marginTop: 10,
   },
 });
 
